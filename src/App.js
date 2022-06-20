@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useEffect, useState } from "react";
+import Feed from './components/feed';
+import Login from './components/login/login';
+
 
 function App() {
+  const [randomPic, setRandomPic] = useState([])
+  const fetchData =  async () => {
+    try {
+    const response = await fetch("https://picsum.photos/v2/list?page=3&limit=10")
+    const data = await response.json()
+    if (!response.ok){
+      throw new Error(response.statusText)
+    }
+    console.log(response)
+    setRandomPic(data)
+    console.log(randomPic)
+    } catch (err) {
+      // console.log(err)
+    }
+  }
+  
+ 
+  useEffect (() => {
+    fetchData()
+    
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login></Login>
+      {randomPic.map((item, index) =>{
+        return (
+         <Feed index={index} item= {item}></Feed>
+
+        )
+      })}
+       
     </div>
   );
 }
