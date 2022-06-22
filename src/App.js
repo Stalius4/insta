@@ -2,41 +2,31 @@
 import { useEffect, useState } from "react";
 import Feed from './components/feed';
 import Login from './components/login/login';
-
-
+import {fetchPhotos} from "../src/utils/utils"
+import Display from "./components/Display"
 function App() {
+  const [user, setUser] = useState();
   const [randomPic, setRandomPic] = useState([])
-  const fetchData =  async () => {
-    try {
-    const response = await fetch("https://picsum.photos/v2/list?page=3&limit=10")
-    const data = await response.json()
-    if (!response.ok){
-      throw new Error(response.statusText)
-    }
-    console.log(response)
-    setRandomPic(data)
-    console.log(randomPic)
-    } catch (err) {
-      // console.log(err)
-    }
-  }
-  
+ const [jwt, setJwt] = useState (false)
  
   useEffect (() => {
-    fetchData()
+    fetchPhotos(setRandomPic)
     
   }, [])
 
 
   return (
     <div className="App">
-      <Login></Login>
-      {randomPic.map((item, index) =>{
+       <div>{jwt ? <Display randomPic={randomPic}/> : <Login setter={setUser} setJwt={setJwt} jwt={jwt}></Login>}</div>
+    
+      
+    
+      {/* {randomPic.map((item, index) =>{
         return (
-         <Feed index={index} item= {item}></Feed>
+         <Feed key={index} item= {item}></Feed>
 
         )
-      })}
+      })} */}
        
     </div>
   );

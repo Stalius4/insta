@@ -11,7 +11,7 @@ return (
     <div  className="container" key ={index}>
     <div className='flex-title'>
       <h1 className='title'>{item.author}</h1>
-      <img src={logo} height={16}></img>
+      <img src={logo} alt="logo" height={16}></img>
       </div>
     
     <img src={item.download_url} alt="fd" width={498} height={250}/>

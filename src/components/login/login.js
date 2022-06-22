@@ -1,40 +1,67 @@
 import insta from "./insta.png"
 import "./login.css"
-import { useEffect, useState } from "react";
-const Login = () => {
+import { createUser, loginUser } from "../../utils/utils.js";
+import { useState } from "react";
+const Login = ({setter, setJwt, jwt}) => {
 
-    const [user, setUser] = useState()
+    const [username, setUsername] = useState()
+    const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const [login, setLogin]=  useState(
-        {
-        name:"",
-        pass:""
-        })
-        const handleChange = e => {
-            const { name, value } = e.target;
-            setLogin(prevState => ({
-                ...prevState,
-                [name]: value
-            }));
-        };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        createUser(username, email, password, setter);
+      };
+const submitLogin = (e) => {
+    e.preventDefault();
+    loginUser(username, email, password, setJwt)
+console.log("jwt in login",jwt)
+}
+      
     return(
 <div className="flex-container">
-    <img src={insta} alt="" width={160} />
-    <form className="flex-form"  action="" >
+
+    {/* <img  className="img" src={insta} alt="" width={160} />
+    <form className="flex-form"  onSubmit={submitHandler} >
         <input 
-        onChange={handleChange} 
+        onChange={(e) => setUsername(e.target.value)}
         className="form" 
         type="text" 
-        placeholder="Phone number, username or email"
-        value={login.name}
-        name="name"/>
-        <input onChange={handleChange} 
+        placeholder="Username "
+        />        <input 
+        onChange={(e) => setEmail(e.target.value)}
+        className="form" 
+        type="text" 
+        placeholder="Email"
+        />
+        <input 
+        onChange={(e) => setPassword(e.target.value)}
          className="form"
           type="password" 
           placeholder="Password" 
-        value={login.pass}
-        name="pass" />
-        <button  type="button" >Login</button>
+ />
+        <button  type="submit"  >Register</button>
+    </form> */}
+    <img  className="img" src={insta} alt="" width={160} />
+    <form className="flex-form"  onSubmit={submitLogin} >
+        <input 
+        onChange={(e) => setUsername(e.target.value)}
+        className="form" 
+        type="text" 
+        placeholder="Username "
+        />        <input 
+        onChange={(e) => setEmail(e.target.value)}
+        className="form" 
+        type="text" 
+        placeholder="Email"
+        />
+        <input 
+        onChange={(e) => setPassword(e.target.value)}
+         className="form"
+          type="password" 
+          placeholder="Password" 
+ />
+        <button  type="submit"  >Login</button>
     </form>
 </div>
 
