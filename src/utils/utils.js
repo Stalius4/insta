@@ -12,12 +12,27 @@ export const fetchPhotos =  async (setter) => {
     }
     console.log(response)
     setter(data)
+    console.log(data, "data")
     } catch (err) {
     }
   }
   
+  export const listUsers =  async (setter) => {
+    try {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}/user/`)
+    const data = await response.json()
+    if (!response.ok){
+      throw new Error(response.statusText)
+    }
+    console.log(response)
+    setter(data)
+    console.log(data, "data")
+    } catch (err) {
+    }
+  }
 
-  export const createUser = async (username, email, password, setter) => {
+
+  export const createUser = async (username, email, password, setter, setDuplicateUser, setDuplicateEmail) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_REST_API}/user/`, {
         method: "POST",
@@ -29,12 +44,23 @@ export const fetchPhotos =  async (setter) => {
         }),
       });
       const data = await res.json();
-      if (data.error) {
-        throw new Error(data.error);
+      
+      if (data.error.keyPattern.username ===1) { 
+        //if duplicate user exist
+        setDuplicateUser(false);
+        console.log("username already exist")
+        // console.log(data.error.keyPattern.username)
+      }else if((data.error.keyPattern.email ===1)){
+        setDuplicateEmail(false)
+        console.log("email already exists")
+
       }
+      // console.log("uknown")
+      
       setter(data.newUser.username);
     } catch (error) {
       console.log(error);
+  
     }
   };
 
@@ -51,13 +77,15 @@ export const fetchPhotos =  async (setter) => {
         }),
       });
       const data = await res.json();
-      console.log(data)
+      console.log("this is data",data)
       setJwt(data)
+      
       // if (data.error) {
       //   throw new Error(data.error);
       // }
       // setter(data.newUser.username);
     } catch (error) {
+
       console.log(error);
     }
   };
