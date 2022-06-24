@@ -12,12 +12,12 @@ export const fetchPhotos =  async (setter) => {
     }
     console.log(response)
     setter(data)
-    console.log(data, "data")
+  
     } catch (err) {
     }
   }
   
-  export const listUsers =  async (setter) => {
+  export const listUsers =  async (setUserList) => {
     try {
     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/`)
     const data = await response.json()
@@ -25,8 +25,8 @@ export const fetchPhotos =  async (setter) => {
       throw new Error(response.statusText)
     }
     console.log(response)
-    setter(data)
-    console.log(data, "data")
+    setUserList(data.result)
+    // make sure result should me in array so I will be able tu use map()
     } catch (err) {
     }
   }
@@ -89,3 +89,14 @@ export const fetchPhotos =  async (setter) => {
       console.log(error);
     }
   };
+
+  export const delUser = async (username) =>{
+    try {
+     await fetch(`${process.env.REACT_APP_REST_API}/user/${username}`, {
+        method: "DELETE",
+      })
+      .then(response => response.json());
+    } catch (error) {
+      
+    }
+  }

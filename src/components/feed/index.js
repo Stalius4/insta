@@ -6,6 +6,7 @@ import ribbon from './ribbon.png';
 import speech from './speech-bubble.png';
 import './index.css';
 const Feed =({item, index})=>{
+  
 return (
 
     <div  className="container" key ={index}>

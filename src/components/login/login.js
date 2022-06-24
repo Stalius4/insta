@@ -57,14 +57,14 @@ export const Login = ({ setter, setJwt, jwt, setDuplicateUser, user ,duplicateUs
           className="form" required
           type="text"
           
-        /><span class="floating-label">Username</span>
+        /><span className="floating-label">Username</span>
         <input
           onChange={(e) => setPassword(e.target.value)}
           className="form"
           type="password"
           placeholder="Password"
         />
-        <button type="submit">Login</button>
+        <button className="button" type="submit">Login</button>
       </form>
       {loginError ? (<div className="wrong-pass"> Sorry, your password was incorrect. Please double-check your password. </div>) : ("")}
     </div>
@@ -97,7 +97,7 @@ export const Login = ({ setter, setJwt, jwt, setDuplicateUser, user ,duplicateUs
               type="password"
               placeholder="Password"
             />
-            <button type="submit">Register</button>
+            <button className="button" type="submit">Register</button>
           </form>
           {duplicateUser ? "": <div className="dub-message">Login already exists. </div> }
     
