@@ -33,8 +33,8 @@ const[duplicateEmail, setDuplicateEmail] = useState(true)
   return (
     <div className="App">
        <div>{jwt ? <Display randomPic={randomPic}/> : <Login user={user} setter={setUser} setJwt={setJwt} jwt={jwt} setDuplicateUser={setDuplicateUser} duplicateUser={duplicateUser} duplicateEmail={duplicateEmail} setDuplicateEmail={setDuplicateEmail}/>}</div>
-    {/* <UserDisplay  user={user} userList={userList} setUserList={setUserList}/> */}
-{/* <UserList></UserList> */}
+    <UserDisplay  user={user} userList={userList} setUserList={setUserList}/> 
+{/* <UserList></UserList>
     
       {/* {randomPic.map((item, index) =>{
         return (

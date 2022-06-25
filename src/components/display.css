@@ -17,3 +17,10 @@
     width: 180px;
     border-bottom: rgba(0, 0, 0, 0.373) solid 1px;
 }
+
+
+.Display{
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}

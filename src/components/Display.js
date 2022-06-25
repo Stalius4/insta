@@ -9,7 +9,7 @@ import { delUser } from "../utils/utils";
 
 export const Display= ({randomPic}) => {
 console.log(randomPic, "randpic")
-    return (<div>
+    return (<div className="Display">
         {randomPic.map((item, index) => {
             return (
              <Feed key={index} item= {item}></Feed>
