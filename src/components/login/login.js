@@ -42,13 +42,15 @@ export const Login = ({ setter, setJwt, jwt, setDuplicateUser, user ,duplicateUs
     e.preventDefault();
     loginUser(username, email, password, setJwt);
     console.log("jwt in login", jwt);
-    if (jwt === false ) {
+    if (jwt === false) {
       setLoginError(true);
-    } else {setLoginError(false)}
+    } else {
+      setLoginError(false);
+    }
   };
 
   return (
-   <>
+   <div className="App">
         {signUp ?    <div>  <div className="flex-container">
       <img className="img" src={insta} alt="" />
       <form className="flex-form" onSubmit={submitLogin}>
@@ -113,7 +115,7 @@ export const Login = ({ setter, setJwt, jwt, setDuplicateUser, user ,duplicateUs
          
           </div> }
 
-    </>
+    </div>
   );
 };
 

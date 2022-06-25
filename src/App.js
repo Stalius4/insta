@@ -1,12 +1,16 @@
 
 import { useEffect, useState } from "react";
-import Feed from './components/feed';
+import { NavBar} from './components/navbar/navbar';
 import {Login, SignUp} from './components/login/login';
 import {fetchPhotos, listUsers} from "../src/utils/utils"
 import {Display, UserDisplay} from "./components/Display"
 import {UserList} from "./components/userList/userlist"
 import "./App.css"
 import  {delUser} from "./utils/utils"
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
 function App() {
   const [user, setUser] = useState();
   const [randomPic, setRandomPic] = useState([])
@@ -27,19 +31,15 @@ function App() {
 
 
   return (
-    <div className="App">
-       <div>{jwt ? <Display randomPic={randomPic}/> : <Login user={user} setter={setUser} setJwt={setJwt} jwt={jwt} setDuplicateUser={setDuplicateUser} duplicateUser={duplicateUser} duplicateEmail={duplicateEmail} setDuplicateEmail={setDuplicateEmail}/>}</div>
-    <UserDisplay  user={user} userList={userList} setUserList={setUserList}/>
-{/* <UserList></UserList> */}
-    
-      {/* {randomPic.map((item, index) =>{
-        return (
-         <Feed key={index} item= {item}></Feed>
-
-        )
-      })} */}
-       
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/login' element ={<Login user={user} setter={setUser} setJwt={setJwt} jwt={jwt} setDuplicateUser={setDuplicateUser} duplicateUser={duplicateUser} duplicateEmail={duplicateEmail} setDuplicateEmail={setDuplicateEmail} />}/>
+        <Route  className="sdas" path="/" element ={<NavBar/>}> 
+        <Route path="/na" element ={<Display randomPic={randomPic}/>}/> 
+          
+      </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

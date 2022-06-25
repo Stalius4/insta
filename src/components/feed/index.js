@@ -8,8 +8,8 @@ import './index.css';
 const Feed =({item, index})=>{
   
 return (
-
-    <div  className="container" key ={index}>
+<div className='App-feed'>
+    <div  className="feed-container-flex" key ={index}>
     <div className='flex-title'>
       <h1 className='title'>{item.author}</h1>
       <img src={logo} alt="logo" height={16}></img>
@@ -30,6 +30,7 @@ return (
     <div className='post'>Post</div>
   </div>
 
+  </div>
   </div>
 )
 }

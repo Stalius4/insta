@@ -3,22 +3,27 @@ import {UserList} from "./userList/userlist"
 import "./display.css"
 import { useState, useEffect } from "react";
 import { delUser } from "../utils/utils";
-
+import {Link, Outlet} from "react-router-dom"
 
 
 
 export const Display= ({randomPic}) => {
 console.log(randomPic, "randpic")
-    return (<div>
+    return (<div className="display-gap">
         {randomPic.map((item, index) => {
             return (
              <Feed key={index} item= {item}></Feed>
     
             )
           })}
+         
    </div>
     )
 }
+
+
+
+
 
 
 export const UserDisplay = ({ userList, setUserList}) => {

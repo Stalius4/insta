@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.flex-box{
+.flex-box-userlist{
 
     display: flex;
     flex-direction: row;
