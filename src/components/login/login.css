@@ -3,7 +3,13 @@
     margin: 0;
     padding: 0;
 }
-
+.login-container{
+    display: flex;
+    flex-direction: column;
+   gap: 15px;
+   align-items:center;
+   margin-top: 20px;
+}
 .flex-container{
     display: flex;
     flex-direction: column;
@@ -13,6 +19,7 @@
     border: rgba(145, 144, 144, 0.397) solid 1px;
     align-items:center;
     text-align: center;
+
 }
 
 .img{
@@ -68,6 +75,7 @@ margin-top: 10px;
     background-color: white;
     align-items:center;
     justify-content:center;
+
 
 }
 

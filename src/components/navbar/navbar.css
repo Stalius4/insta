@@ -13,18 +13,16 @@
     justify-content:space-between;
     align-items: center;
     margin: auto;
-
-    
-  
  
 }
 
 .navbar-flex-outside{
+ 
     width: 100vw;
-    border-bottom: rgb(219, 218, 218) solid 1px;
+    border-bottom: rgb(220, 219, 219) solid 1px;
     background-color: rgb(255, 255, 255);
     position: fixed;
-    display: contents;
+    overflow: hidden;
 
 
 

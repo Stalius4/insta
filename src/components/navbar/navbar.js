@@ -11,8 +11,8 @@ import instaExplore from "./icons/explore.png"
 import instaHeart from "./icons/heart.png"
 
 export const NavBar = () => {
-    return(<selection>
-        <div className="navbar-flex-outside">
+    return(<selection >
+        <div  className="navbar-flex-outside">
 
        
         <div className="navbar-flex">

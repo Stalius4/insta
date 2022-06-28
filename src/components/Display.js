@@ -4,19 +4,23 @@ import "./display.css"
 import { useState, useEffect } from "react";
 import { delUser } from "../utils/utils";
 import {Link, Outlet} from "react-router-dom"
+import { NavBar } from "./navbar/navbar";
 
 
 
 export const Display= ({randomPic}) => {
 console.log(randomPic, "randpic")
-    return (<div className="display-gap">
+
+    return (   <div className="display-gap">
+    <NavBar></NavBar>
+ <div className="display-margin-down">
         {randomPic.map((item, index) => {
             return (
              <Feed key={index} item= {item}></Feed>
     
             )
           })}
-         
+         </div>
    </div>
     )
 }
